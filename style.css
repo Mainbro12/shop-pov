@@ -1,0 +1,39 @@
+.parent {
+  display: flex; 
+  justify-content: center;
+  gap: 16px;
+  margin-top: 80px;
+  
+}
+
+#pricecolor {
+   color: green;
+   
+}
+
+.child {
+     border: 1px solid slategray;
+     padding: 15px;
+     border-radius: 15px;
+         transition: transform 0.3s ease;
+box-shadow: 0px 2px 5px black;
+  img {
+    max-width: 200px;
+    
+  }
+  p {
+    font-weight: 700;
+   
+  }
+}
+.child:hover {
+    transform: scale(1.1);
+}
+#nameProduct {
+margin-top: 155px;
+}
+#button {
+  width: 50px;
+  box-shadow: 0px 2px 2px black;
+color: green;
+}
