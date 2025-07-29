@@ -2,92 +2,178 @@ let products = [
   {
     name: "Iphone 12 Pro",
     price: 18899,
-    image: "./Image/Iphone 12 Pro.webp"
+    oldprice: 20880,
+    image: "./Image/Iphone 12 Pro.webp",
+    categoryId: 1,
   },
   {
     name: "Iphone X",
     price: 8000,
-    image: "./Image/Iphone X.jpg"
+    oldprice: 10000,
+    image: "./Image/Iphone X.jpg",
+    categoryId: 1,
   },
   {
     name: "Xiaomi redmi 15  ultra ",
     price: 64889,
-    image: "./Image/xiaomi_15_ultra_1.jpg"
+    oldprice: 76789,
+    image: "./Image/xiaomi_15_ultra_1.jpg",
+    categoryId: 1,
   },
   {
     name: "Samsung galaxy flip 7",
     price: 54999,
-    image: "./Image/Flip7-FE-White.webp"
+    oldprice: 59999,
+    image: "./Image/Flip7-FE-White.webp",
+    categoryId: 1,
   },
   {
     name: "Samsung S24 Ultra",
     price: 57499,
-    image: "./Image/Samsung S24 Ultra.jpg"
+    oldprice: 64174,
+    image: "./Image/Samsung S24 Ultra.jpg",
+    categoryId: 1,
+  },
+  {
+    name: "Iphone 17 Pro Max",
+    price: 117000,
+    oldprice: 125000,
+    image: "./Image/iphone 17pro Max 256GB.webp",
+    categoryId: 1,
+  },
+  {
+    name: "Lenovo IdeaPad 3",
+    price: 17999,
+    oldprice: 19999,
+    image: "./Image/lenovo ideaPad3.webp",
+    categoryId: 2,
+  },
+  {
+    name: "ASUS VivoBook 15",
+    price: 21999,
+    oldprice: 23999,
+    image: "./Image/Asus vivobook 15.png",
+    categoryId: 2,
+  },
+  {
+    name: "HP Pavilion 14",
+    price: 24999,
+    oldprice: 26999,
+    image: "./Image/HP Pavilion 14.png",
+    categoryId: 2,
+  },
+  {
+    name: "Apple MacBook Air M2",
+    price: 46999,
+    oldprice: 49999,
+    image: "./Image/Apple MacBook Air M2.webp",
+    categoryId: 2,
+  },
+  {
+    name: "Dell Inspiron 15",
+    price: 27999,
+    oldprice: 29999,
+    image: "./Image/Dell Inspiron 15.webp",
+    categoryId: 2,
+  },
+  {
+    name: "Acer Aspire 7",
+    price: 23999,
+    oldprice: 25999,
+    image: "./Image/Acer Aspire 7.webp",
+    categoryId: 2,
+  },
+  {
+    name: "Apple iPad 10.2 (2021)",
+    price: 13999,
+    oldprice: 15999,
+    image: "./Image/ipad-2021.jpg",
+    categoryId: 3,
+  },
+  {
+    name: "Samsung Galaxy Tab A8",
+    price: 8999,
+    oldprice: 9999,
+    image: "./Image/Samsung Galaxy Tab A8.jpg",
+    categoryId: 3,
+  },
+  {
+    name: "Xiaomi Pad 6",
+    price: 12499,
+    oldprice: 13999,
+    image: "./Image/Xiaomi Pad 6.png.webp",
+    categoryId: 3,
+  },
+  {
+    name: "Huawei MatePad 11",
+    price: 11799,
+    oldprice: 12999,
+    image: "./Image/Huawei MatePad 11.jpg",
+    categoryId: 3,
+  },
+  {
+    name: "Lenovo Tab M10 Plus",
+    price: 8499,
+    oldprice: 9499,
+    image: "./Image/lenovo Tab M10 Plus.jpg",
+    categoryId: 3,
+  },
+  {
+    name: "realme Pad 2",
+    price: 7699,
+    oldprice: 8999,
+    image: "./Image/realme Pad 2.jpg",
+    categoryId: 3,
+  },
+];
+const categories = [
+  {
+    id: 1,
+    name: "Смартфони",
+  },
+  {
+    id: 2,
+    name: "Ноутбуки",
+  },
+  {
+    id: 3,
+    name: "Планшети",
   },
 ];
 
-const parentBlock = document.getElementById("parent");          // достає елемент по id "parent"
-parentBlock.className = "parent";                             
+const parentBlock = document.getElementById("parent"); // достає елемент по id "parent"
+parentBlock.className = "parent";
 
-products.forEach(function (product) {                    // проходиться по кожному елементу
-  const childBlock = document.createElement("div");         // створює  дочірній елемент "div"
-  childBlock.className = "child";                           //  додає клас "child" до дочірнього елементу               
-  childBlock.innerHTML =  
-   /* пушить html код всередину елементу
+categories.forEach(function (category) {
+  // проходиться 3 рази
+  const filteredProducts = products.filter(
+    (product) => product.categoryId === category.id
+  );
+
+  const categoryBlock = document.createElement("div");
+  categoryBlock.className = "category";
+
+  parentBlock.appendChild(categoryBlock);
+
+  filteredProducts.forEach(function (product) {
+    // проходиться по кожному елементу
+    const childBlock = document.createElement("div"); // створює  дочірній елемент "div"
+    childBlock.className = "child"; //  додає клас "child" до дочірнього елементу
+    childBlock.innerHTML =
+      /* пушить html код всередину елементу
     додається тег img до поточного продукту
     додається тег p з ім'ям поточного продукту
     додається тег p з ціною до поточного продукту
     
    
-   */                                
-      `                                  
+   */
+      `                                
       <img src="${product.image}" >                                   
       <p>${product.name} </p>
       <p id="pricecolor">${product.price} ₴</p>
+      <p id="oldprice">${product.oldprice} ₴</p>
       `;
-      parentBlock.appendChild(childBlock);            // додає всередину parent-блоку child-блок
-    });
 
-const button = document.getElementById("addButton")                 // достає елемент кнопки по id
-const block = document.getElementById("parent")                      // достає елемент parent block по id
-
-button.addEventListener('click', () => {                                // відстежує подію кліку по кнопці
-  const nameInput = document.getElementById("nameProduct");             // достає елемент input по id
-  const priceInput = document.getElementById("numbertext");             // достає елемент input по id
-  const imageInput = document.getElementById("imageInput");             // достає елемент image по id
-  const imagefile = imageInput.files[0];                                // достає перший єдиний файл з input
-
-  if (!imagefile) {                                        // якщо файл не обрано вибиває текст нижче
-    alert("Please select an image!");
-    return;
-  }
-
-  const reader = new FileReader();                        // створюємо обєкт FileReader і зберігаємо змінну
-
-  reader.onload = function(e) {                            // відстежуємо подію onload (після того як завантажили файл)
-    const imageUrl = e.target.result;                     // дістаємо URL картинки
-
-    const newItem = {                                       // створюємо новий об'єкт для продукту зі всіма потрібними ключами
-      name: nameInput.value,
-      price: parseInt(priceInput.value),
-      image: imageUrl
-    };
-
-    products.push(newItem);                           // додаємо в кінець масиву
-
-    const childBlock = document.createElement("div");               // додаємо новий блок
-    childBlock.className = "child";
-    childBlock.innerHTML = `
-      <img src="${newItem.image}" alt="${newItem.name}">
-      <p>${newItem.name}</p>
-      <p id="pricecolor">${newItem.price} ₴</p>
-    `;
-    parentBlock.appendChild(childBlock);
-
-    console.log(products);
-  };
-
-  reader.readAsDataURL(imagefile); // викликає метод onload по змінні imageFile коли туди щось завантажили
+    categoryBlock.appendChild(childBlock); // додає всередину parent-блоку child-блок
+  });
 });
-
-
