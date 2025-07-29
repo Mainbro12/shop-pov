@@ -1,10 +1,14 @@
+.parent {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
 .category {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
 
   justify-content: center;
   gap: 16px;
-  margin-top: 80px;
 }
 
 #pricecolor {
@@ -65,4 +69,109 @@
 
     font-size: 25px;
   }
+}
+
+.parent {
+  padding: 20px;
+}
+
+.category-title {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.child {
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.child img {
+  width: 100%;
+  height: auto;
+}
+
+#pricecolor {
+  color: green;
+  font-weight: bold;
+}
+
+#oldprice {
+  text-decoration: line-through;
+  color: #888;
+}
+
+body {
+  
+}
+
+
+/* fonts */
+
+.intel-One-Mono-bold{
+   font-family: "Intel One Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.sansita-regular {
+  font-family: "Sansita", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sansita-bold {
+  font-family: "Sansita", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.sansita-extrabold {
+  font-family: "Sansita", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.sansita-black {
+  font-family: "Sansita", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.sansita-regular-italic {
+  font-family: "Sansita", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.sansita-bold-italic {
+  font-family: "Sansita", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.sansita-extrabold-italic {
+  font-family: "Sansita", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.sansita-black-italic {
+  font-family: "Sansita", sans-serif;
+  font-weight: 900;
+  font-style: italic;
 }

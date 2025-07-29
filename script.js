@@ -126,6 +126,7 @@ let products = [
     categoryId: 3,
   },
 ];
+
 const categories = [
   {
     id: 1,
@@ -141,39 +142,44 @@ const categories = [
   },
 ];
 
-const parentBlock = document.getElementById("parent"); // достає елемент по id "parent"
+// Знайти контейнер, куди все вставляється
+const parentBlock = document.getElementById("parent");
 parentBlock.className = "parent";
 
+document.getElementsByTagName('body')[0].className = "sansita-regular";
+
+
+// Генерація категорій з товарами
 categories.forEach(function (category) {
-  // проходиться 3 рази
+  // Фільтруємо товари по категорії
   const filteredProducts = products.filter(
     (product) => product.categoryId === category.id
-  );
+  )
 
+  const sortedProducts = filteredProducts.sort((product1,product2) => product1.price - product2.price)
+  // Створюємо заголовок над категорією
+  const categoryTitle = document.createElement("h2");
+  categoryTitle.textContent = category.name;
+  categoryTitle.classList = "category-title intel-One-Mono-bold";
+  parentBlock.appendChild(categoryTitle);
+
+  // Створюємо блок для товарів цієї категорії
   const categoryBlock = document.createElement("div");
   categoryBlock.className = "category";
 
-  parentBlock.appendChild(categoryBlock);
-
-  filteredProducts.forEach(function (product) {
-    // проходиться по кожному елементу
-    const childBlock = document.createElement("div"); // створює  дочірній елемент "div"
-    childBlock.className = "child"; //  додає клас "child" до дочірнього елементу
-    childBlock.innerHTML =
-      /* пушить html код всередину елементу
-    додається тег img до поточного продукту
-    додається тег p з ім'ям поточного продукту
-    додається тег p з ціною до поточного продукту
-    
-   
-   */
-      `                                
-      <img src="${product.image}" >                                   
-      <p>${product.name} </p>
+  // Додаємо товари до блоку
+  sortedProducts.forEach(function (product) {
+    const childBlock = document.createElement("div");
+    childBlock.className = "child";
+    childBlock.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <p>${product.name}</p>
       <p id="pricecolor">${product.price} ₴</p>
       <p id="oldprice">${product.oldprice} ₴</p>
-      `;
-
-    categoryBlock.appendChild(childBlock); // додає всередину parent-блоку child-блок
+    `;
+    categoryBlock.appendChild(childBlock);
   });
+
+  // Додаємо блок категорії до загального контейнера
+  parentBlock.appendChild(categoryBlock);
 });
